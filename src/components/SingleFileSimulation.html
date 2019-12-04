@@ -2,7 +2,7 @@
 
 <div id="app">
     <p>{{ title }}</p>
-    <button v-on:click="title = 'nah ganti kan'">click aja</button>
+    <button v-on:click="changeTitle">click aja</button>
 </div>
 
 <script>
@@ -10,6 +10,11 @@
         el: '#app',
         data: {
             title: 'Hello World will end soon'
+        },
+        methods: {
+            changeTitle() {
+                this.title = 'nah ganti kan';
+            }
         }
     });
 </script>
