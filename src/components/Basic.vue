@@ -1,0 +1,1 @@
+// tentang auto render pada vue
