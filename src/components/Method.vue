@@ -1,17 +1,15 @@
 <template>
   <div>
-    <h1 class="mb-5" style="font-weight: lighter; color: #47b784;">Conditional Rendering</h1>
+    <h1 class="mb-5" style="font-weight: lighter; color: #47b784;">Event Handling</h1>
     <hr />
 
     <div class="lead text-muted">
       Check the
-      <code>src/components/ConditionalRendering.vue</code> file
+      <code>src/components/Method.vue</code> file
     </div>
 
     <div class="my-5">
       <button @click="clickHandler" class="btn btn-outline-success">Click me</button>
-      <br>
-      <p v-show="show">You know what? I'm using <code>v-show</code></p>
     </div>
 
     <div class="my-5">
@@ -19,11 +17,6 @@
         You typed : 
         <code>{{newMessage}}</code>
       </p>
-      <p v-if="newMessage.length <= 0">Type something...</p>
-      <p v-else-if="newMessage.length < 10">Try type longer</p>
-      <p v-else-if="newMessage.length >= 10 && newMessage.length < 20"> Well, it's long enough</p>
-
-      <p v-else>Wow wow.. hey dude you need to stop. Its already too long</p>
       <input
         type="text"
         v-on:input="changeText"
@@ -31,10 +24,18 @@
         placeholder="This input will listen anything you typed"
       />
       <br>
-      
+      <input
+        type="text"
+        @keyup.enter="pressEnter"
+        @keyup.space="pressSpace"
+        class="form-control"
+        placeholder="This input will listen for space and enter key"
+      />
     </div>
 
-    
+    <ul>
+      <li v-for="log in logs" :key="log">{{ log }}</li>
+    </ul>
   </div>
 </template>
 
@@ -44,15 +45,14 @@ export default {
 
   data() {
     return {
-      newMessage: "",
-      show: false,
-      text: ""
+      logs: [],
+      newMessage: ""
     };
   },
 
   methods: {
     clickHandler() {
-      this.show = !this.show
+      window.alert("I am clicked!");
     },
 
     pressEnter() {
